@@ -90,11 +90,13 @@ void moveTo(double l, double r, int t){
 void lineFollow(int t){
     int count = 0;
     while(count < t){
-        if(analog(0) > 1300){
+        if(analog(5) > 1400){
             moveTo(60,80,10);
+            printf("moving straight, a bit to right\n");
         }
         else{
             moveTo(30,-30,10);
+            printf("turning left\n");
         }
         count++;
     }
@@ -119,8 +121,8 @@ void movements_from_percent_speed(double leftp, double rightp, int time){
 
     turning_angle = angularspeed * (time / 1000.0);    //NOTE:USING RADIANS
 
-    x = x - (innerR + 0.5 * outerR)*(1 - cos(turning_angle)); //1 //lack going straight, maybe change turning_angle to facing_angle?
-    y = y + (innerR + 0.5 * outerR) * sin(turning_angle);//2 //lack going straight, maybe change turning_angle to facing_angle?
+    x = x - (innerR + 0.5 * outerR)*(1 - cos(turning_angle)); //1 //lack going straight, change turning_angle to facing_angle?
+    y = y + (innerR + 0.5 * outerR) * sin(turning_angle);//2 //lack going straight, change turning_angle to facing_angle?
 
     turning_angle = x / (2 * Pi) * 360; //NOTE: USING DEGREES //3
 
