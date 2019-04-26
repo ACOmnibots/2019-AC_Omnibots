@@ -4,19 +4,19 @@ void rest(int t);
 void AGP(int port, int h); //arm ground position
 void CP(int ch, int p); //claw position
 void CC(int ch);//Close claw to position 0
-void moveTo(double lSpeedPercent, double rSpeedPercent, int t);
-void move(double lSpeedPercent, double rSpeedPercent);
-void moveToD(double lSpeedPercent, double rSpeedPercent, int position);
-void moveToDT(double lSpeedPercent, double rSpeedPercent, int position);
-void moveBDWhenGrab(double lSpeedPercent, double rSpeedPercent, int position, int port, int h);
-void turnLeft(double degree, int onTape);
-void turnRight(double degree, int onTape);
-void grabContainer();
-void singleWheel(int p, int degree);
-void lineFollowBluW(int t);
-void FBlue(int position, int a2min, int a2max, int a1min, int a1max);
-void pushPoms();
-void cli();
+void moveTo(double lSpeedPercent, double rSpeedPercent, int t); // robot move for time t; lSpeedPercent: left wheel speed percent; rSpeedPercent: right wheel speed percent.
+void move(double lSpeedPercent, double rSpeedPercent); // robot move
+void moveToD(double lSpeedPercent, double rSpeedPercent, int position); // robot move to left wheel position(left motor position counter)
+void moveToDT(double lSpeedPercent, double rSpeedPercent, int position); // robot move to right wheel position(right motor position counter)
+void moveBDWhenGrab(double lSpeedPercent, double rSpeedPercent, int position, int port, int h); // robot move back while grabing
+void turnLeft(double degree, int onTape); // turn left degree based on left motor position counter to turn 360 degree, different between on tape and off tape
+void turnRight(double degree, int onTape); // turn right degree based on left motor position counter to turn 360 degree, different between on tape and off tape
+void grabContainer(); // steps to grab enemy container
+void singleWheel(int p, int degree); // turn on single wheel
+void lineFollowBluW(int t); // linefollow on blue tape
+void FBlue(int position, int a2min, int a2max, int a1min, int a1max); //fix position and move forward while pushing blue poms
+void pushPoms(); //steps to push blue poms
+void cli(); // calibrate position by use distance sensor sensing skyscrapers
 
 /************************************************************************
 *
