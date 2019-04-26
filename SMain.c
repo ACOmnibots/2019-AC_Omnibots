@@ -16,7 +16,6 @@ void singleWheel(int p, int degree); // turn on single wheel
 void lineFollowBluW(int t); // linefollow on blue tape
 void FBlue(int position, int a2min, int a2max, int a1min, int a1max); //fix position and move forward while pushing blue poms
 void pushPoms(); //steps to push blue poms
-void cli(); // calibrate position by use distance sensor sensing skyscrapers
 
 /************************************************************************
 *
@@ -435,75 +434,6 @@ void singleWheel(int p, int degree)
     }
 }
 
-void cli()
-{
-    reset();
-    cmpc(1);
-    cmpc(3);
-    while(!(analog(2) >= a2min && analog(2) <= a2max && analog(1) >= a1min && analog(1) <= a1max))
-    {
-        if(analog(2) > a2min && analog(1) >= a1min && analog(1) <= a1max)
-        {
-            motor(1,lMax * 0 / 100);
-            motor(3,rMax * 30 / 100);
-        }
-
-        else if(analog(2) < a2max && analog(1) >= a1min && analog(1) <= a1max)
-        {
-            motor(1,lMax * 0 / 100);
-            motor(3,rMax * -30 / 100);
-        }
-
-        else if(analog(2) >= a2min && analog(2) <= a2max && analog(1) < a1min)
-        {
-            motor(1,lMax * 30 / 100);
-            motor(3,rMax * -30 / 100);
-        }
-
-        else if(analog(2) >= a2min && analog(2) <= a2max && analog(1) < a1max)
-        {
-            motor(1,lMax * -30 / 100);
-            motor(3,rMax * 30 / 100);
-        }
-
-        else if(analog(2) < a2min && analog(1) > a1max)
-        {
-            motor(1,lMax * 30 / 100);
-            motor(3,rMax * -30 / 100);
-        }
-
-        else if(analog(2) > a2max && analog(1) < a1min)
-        {
-            motor(1,lMax * -30 / 100);
-            motor(3,rMax * 30 / 100);
-        }
-
-        else if(analog(2) < a2min && analog(1) < a1min)
-        {
-            turnLeft(3, 1);
-            motor(1,lMax * 50/100);
-            motor(3,rMax * 50/100);
-            msleep(500);
-			turnRight(3, 1);
-            motor(1,lMax * -50/100);
-            motor(3,rMax * -50/100);
-            msleep(700);
-        }
-        else if(analog(2) > a2min && analog(1) > a1min)
-        {
-            motor(1,lMax * 10 /100);
-            motor(3,rMax * -10 /100);
-            msleep(200);
-            motor(1,lMax * 30/100);
-            motor(3,rMax * 30/100);
-            msleep(200);
-            motor(1,lMax * -10/100);
-            motor(3,rMax * 10/100);
-            msleep(200);
-        }
-        printf("%d and %d\n",analog(1), analog(2));
-    }
-}
 
 void FBlue(int position, int a2min, int a2max, int a1min, int a1max)
 {
