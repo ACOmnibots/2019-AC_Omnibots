@@ -109,14 +109,7 @@ void pushPoms () {
     moveToD(70,69.9, 3000);
     moveToD(100, 97, 1000);
     moveToD(100, 99, 5000);
-    /*
-    cli();
-    moveToD(100, 100, 6000);
-    cli();
-    moveToD(100, 100, 6000);
-    cli();
-    moveToD(100, 100, 7000);
-    */
+    
 }
 
 void lineFollowBluW (int t) {
